@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    locations: classpath:sql/migration/{vendor}
+    fail-on-missing-locations: true
+    baseline-on-migrate: true
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+discord:
+  enable: true
+
+  bot:
+    token: ${DISCORD_BOT_TOKEN}
+    guild-id: ${DISCORD_BOT_GUILD_ID}
+    enable-intents: GUILD_MESSAGES, DIRECT_MESSAGES, MESSAGE_CONTENT
+    disable-caches: ACTIVITY, VOICE_STATE, EMOJI, STICKER, CLIENT_STATUS, ONLINE_STATUS, SCHEDULED_EVENTS
+    online-status: ONLINE
